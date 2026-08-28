@@ -15,7 +15,7 @@
   --pad:clamp(20px,5vw,72px);
   --s0:clamp(15px,.95rem + .2vw,17px);
   --s1:clamp(19px,1.1rem + .5vw,23px);
-  --s7:clamp(44px,2.2rem + 6.4vw,124px);
+  --s7:clamp(40px,2rem + 4.6vw,92px);
   --s5:clamp(30px,1.6rem + 3vw,62px);
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -43,8 +43,8 @@ nav.kayd{border-color:var(--cizgi)}
 .cta.hayalet{background:transparent;color:var(--mürekkep);border:1px solid var(--cizgi)}
 
 /* HERO */
-header{padding:clamp(120px,17vh,200px) 0 clamp(56px,8vh,110px)}
-h1{font-size:var(--s7);margin:22px 0 26px;max-width:16ch}
+header{padding:clamp(104px,15vh,170px) 0 clamp(48px,7vh,96px)}
+h1{font-size:var(--s7);margin:20px 0 24px;max-width:20ch}
 h1 em{font-style:normal;color:var(--asit)}
 .girisalt{max-width:52ch;color:var(--sönük);font-size:var(--s1);line-height:1.45}
 .dus{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
@@ -194,6 +194,11 @@ footer{border-top:1px solid var(--cizgi);padding:26px 0 34px;display:flex;justif
 <a class="cta stick" id="stickcta" href="#iletisim" data-t="cta1">Ücretsiz demo iste</a>
 
 <script>
+/* ---- İLETİŞİM (TEK KAYNAK — numarayı buraya yaz) ---- */
+const WA='905XXXXXXXXX';          // ← operatörün WhatsApp numarası (ülke kodu, + ve boşluk YOK)
+const MAIL='merhaba@clearform.co'; // ← outreach maili
+const WA_METIN={tr:'Merhaba, işletmem için ücretsiz demo istiyorum.',en:'Hi, I would like a free demo for my business.',de:'Guten Tag, ich hätte gerne einen kostenlosen Entwurf für meinen Betrieb.'};
+function waLink(){return `https://wa.me/${WA}?text=`+encodeURIComponent(WA_METIN[dil]||WA_METIN.tr)}
 /* ---- İŞLER ---- */
 const ISLER=[
  {s:'rafine-moda',ad:'Rafine Moda',sek:{tr:'Kuaför · Moda, İstanbul',en:'Hair salon · Istanbul',de:'Friseur · Istanbul'}},
@@ -252,7 +257,7 @@ function dilAyarla(l){
   dil=l; document.documentElement.lang=l;
   document.querySelectorAll('[data-t]').forEach(el=>{const v=(D[l]||{})[el.dataset.t];if(v!==undefined)el.innerHTML=v});
   document.querySelectorAll('#dil button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
-  ciz(); sec(aktif,true);
+  ciz(); sec(aktif,true); if(window.iletisimBagla)iletisimBagla();
   try{localStorage.setItem('cf_dil',l)}catch(e){}
 }
 document.querySelectorAll('#dil button').forEach(b=>b.onclick=()=>dilAyarla(b.dataset.l));
@@ -283,6 +288,13 @@ function dur(){clearInterval(otomatik);otomatik=null}
 const azHareket=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function basla(){if(azHareket||window.innerWidth<=900)return;otomatik=setInterval(()=>sec((aktif+1)%ISLER.length),4200)}
 ciz(); sec(0,true);
+/* iletişim bağla */
+window.iletisimBagla=function iletisimBagla(){
+  const l=waLink();
+  ['navcta','cta1','cta2','stickcta'].forEach(id=>{const e=document.getElementById(id);if(e){e.href=l;e.target='_blank';e.rel='noopener'}});
+  document.getElementById('footIletisim').innerHTML=`<a href="${l}" target="_blank" rel="noopener">whatsapp</a> · <a href="mailto:${MAIL}">${MAIL}</a>`;
+}
+iletisimBagla();
 new IntersectionObserver(e=>{e[0].isIntersecting?(otomatik||basla()):dur()},{threshold:.35}).observe(document.getElementById('isler'));
 addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('kayd',scrollY>20),{passive:true});
 try{const k=localStorage.getItem('cf_dil');if(k&&k!=='tr')dilAyarla(k);}catch(e){}
