@@ -197,8 +197,8 @@ footer{border-top:1px solid var(--cizgi);padding:26px 0 34px;display:flex;justif
 
 <script>
 /* ---- İLETİŞİM (TEK KAYNAK — numarayı buraya yaz) ---- */
-const WA='905XXXXXXXXX';          // ← operatörün WhatsApp numarası (ülke kodu, + ve boşluk YOK)
-const MAIL='merhaba@clearform.co'; // ← outreach maili
+const WA='4915756262699';         // Arda · WhatsApp (+49 157 5626 2699)
+const MAIL='';                    // outreach maili gelince doldur (boşken footer'da gösterilmez)
 const WA_METIN={tr:'Merhaba, işletmem için ücretsiz demo istiyorum.',en:'Hi, I would like a free demo for my business.',de:'Guten Tag, ich hätte gerne einen kostenlosen Entwurf für meinen Betrieb.'};
 function waLink(){return `https://wa.me/${WA}?text=`+encodeURIComponent(WA_METIN[dil]||WA_METIN.tr)}
 /* ---- İŞLER ---- */
@@ -294,7 +294,7 @@ ciz(); sec(0,true);
 window.iletisimBagla=function iletisimBagla(){
   const l=waLink();
   ['navcta','cta1','cta2','stickcta'].forEach(id=>{const e=document.getElementById(id);if(e){e.href=l;e.target='_blank';e.rel='noopener'}});
-  document.getElementById('footIletisim').innerHTML=`<a href="${l}" target="_blank" rel="noopener">whatsapp</a> · <a href="mailto:${MAIL}">${MAIL}</a>`;
+  document.getElementById('footIletisim').innerHTML=`<a href="${l}" target="_blank" rel="noopener">whatsapp · +49 157 5626 2699</a>`+(MAIL?` · <a href="mailto:${MAIL}">${MAIL}</a>`:'');
 }
 iletisimBagla();
 new IntersectionObserver(e=>{e[0].isIntersecting?(otomatik||basla()):dur()},{threshold:.35}).observe(document.getElementById('isler'));
