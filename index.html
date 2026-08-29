@@ -70,7 +70,8 @@ section{padding:clamp(58px,10vh,124px) 0}
 h2{font-size:var(--s5);max-width:15ch}
 
 /* İŞLER — imza an: VİNİL KESİM */
-.isler{display:grid;grid-template-columns:minmax(300px,.95fr) 1.05fr;gap:clamp(26px,4vw,60px);align-items:start}
+.isler{display:grid;grid-template-columns:minmax(300px,.95fr) 1.05fr;gap:clamp(26px,4vw,60px);align-items:stretch}
+.isler > div:nth-child(2){height:100%}
 .index{border-top:1px solid var(--kesim)}
 .sat{position:relative;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;width:100%;text-align:left;
   background:none;border:0;border-bottom:1px solid var(--kesim);border-radius:var(--r-kesim);color:var(--not);cursor:pointer;
@@ -83,6 +84,7 @@ h2{font-size:var(--s5);max-width:15ch}
 .sat .ad i{display:inline-block;font-style:normal;transition:transform .34s var(--ev),color .34s var(--ev)}
 .sat.on .ad i{transform:translateY(-2px) rotate(.4deg);color:var(--vinil-yazi)}
 .sat .sek{font-family:"Chivo Mono",monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase}
+.rozet{display:inline-block;font-family:"Chivo Mono",monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--kesim);padding:2px 6px;margin-left:8px;color:var(--not);vertical-align:middle}
 /* plotter bıçağı */
 .bicak{position:absolute;top:0;bottom:0;width:1px;background:var(--vinil);left:0;opacity:0;pointer-events:none}
 .sat.kesiyor .bicak{animation:kes .52s var(--ev) forwards}
@@ -151,7 +153,7 @@ footer .olcu{display:inline-flex;align-items:center;min-height:44px}
 </nav>
 
 <header class="kap">
-  <p class="olcu" data-t="etiket">İş emri · 15 canlı · İstanbul</p>
+  <p class="olcu" data-t="etiket">İş emri · 20 canlı · İstanbul · Köln · Austin</p>
   <h1 data-t="h1">Şablon değil. <span>Sizin</span> işiniz için kesilmiş site.</h1>
   <p class="girisalt" data-t="alt">Instagram'dan gelen kişiyi arayan, yol tarifi alan, randevu isteyen müşteriye çeviren siteler. Önce ücretsiz demo hazırlarız — beğenirseniz yayına alırız.</p>
   <div class="dus">
@@ -159,8 +161,8 @@ footer .olcu{display:inline-flex;align-items:center;min-height:44px}
     <a class="cta hayalet" href="#isler" data-t="cta2">İşleri gör</a>
   </div>
   <div class="serit">
-    <div><b>15</b><span data-t="k1">canlı iş</span></div>
-    <div><b>9</b><span data-t="k2">sektör</span></div>
+    <div><b>20</b><span data-t="k1">canlı sayfa</span></div>
+    <div><b>12</b><span data-t="k2">sektör</span></div>
     <div><b>48 SA</b><span data-t="k3">ilk demo</span></div>
     <div><b>0 ₺</b><span data-t="k4">demo bedeli</span></div>
   </div>
@@ -168,7 +170,7 @@ footer .olcu{display:inline-flex;align-items:center;min-height:44px}
 
 <section class="kap" id="isler">
   <div class="baslik">
-    <div><p class="olcu" data-t="bol1">İşler</p><h2 data-t="h2a">Hepsi canlı. Hepsi gerçek bir işletme için.</h2></div>
+    <div><p class="olcu" data-t="bol1">İşler</p><h2 data-t="h2a">Yirmi canlı sayfa. On beşi gerçek işletme için, beşi sektör örneği.</h2></div>
     <p class="olcu" data-t="ipucu">Satıra dokun · sağda açılır</p>
   </div>
   <div class="isler">
@@ -235,7 +237,10 @@ const VINIL={
   'moonlight-pilates':['#A07531','#7F5D27'], 'pechko':['#9B7836','#775C29'],
   'rawsters-coffee':['#AB742F','#855A25'], 'yumma-moda':['#C76333','#9B4D28'],
   'ze-butik':['#9C7A2F','#765D23'], 'carbo-smash':['#D4540C','#A5420A'],
-  'koz-smashhouse':['#D05700','#A54500']
+  'koz-smashhouse':['#D05700','#A54500'],
+  'friseur-koeln':['#7E2B24','#7E2B24'], 'kosmetik-studio-de':['#0F6E5C','#0F6E5C'],
+  'zahnarzt-de':['#A83E58','#A83E58'], 'barbershop-us':['#0A6265','#0A6265'],
+  'nail-studio-en':['#B4122F','#B4122F']
 };
 const ISLER=[
  {s:'rafine-moda',ad:'Rafine Moda',sek:{tr:'Kuaför · Moda, İstanbul',en:'Hair salon · Istanbul',de:'Friseur · Istanbul'}},
@@ -253,15 +258,21 @@ const ISLER=[
  {s:'yumma-moda',ad:'Yumma',sek:{tr:'Sağlıklı mutfak · Moda',en:'Healthy kitchen',de:'Gesunde Küche'}},
  {s:'pechko',ad:'Pechko',sek:{tr:'Restoran · Moda',en:'Restaurant · Istanbul',de:'Restaurant · Istanbul'}},
  {s:'ze-butik',ad:'Z&E Butik',sek:{tr:'Abiye butik',en:'Evening wear boutique',de:'Abendmode-Boutique'}},
+ {s:'friseur-koeln',ad:'Seife & Stahl',kurgu:1,sek:{tr:'Kuafor & berber \u00b7 Koln',en:'Hair salon & barber \u00b7 Cologne',de:'Damensalon & Herrenbarbier \u00b7 K\u00f6ln'}},
+ {s:'kosmetik-studio-de',ad:'Studio Nachtkerze',kurgu:1,sek:{tr:'G\u00fczellik merkezi \u00b7 M\u00fcnih',en:'Beauty studio \u00b7 Munich',de:'Kosmetikstudio \u00b7 M\u00fcnchen'}},
+ {s:'zahnarzt-de',ad:'Praxis Nordkrone',kurgu:1,sek:{tr:'Di\u015f klini\u011fi \u00b7 Frankfurt',en:'Dental practice \u00b7 Frankfurt',de:'Zahnarztpraxis \u00b7 Frankfurt'}},
+ {s:'barbershop-us',ad:'Guard & Grain',kurgu:1,sek:{tr:'Berber \u00b7 Austin, TX',en:'Barbershop \u00b7 Austin, TX',de:'Barbershop \u00b7 Austin, TX'}},
+ {s:'nail-studio-en',ad:'Loupe',kurgu:1,sek:{tr:'T\u0131rnak st\u00fcdyosu \u00b7 Londra',en:'Nail studio \u00b7 London',de:'Nagelstudio \u00b7 London'}},
 ];
+const SOZ={rozet:{tr:'ornek',en:'sample',de:'Beispiel'}};
 const CANLI={};
 fetch('canli.json').then(r=>r.json()).then(j=>{Object.assign(CANLI,j);ciz();sec(aktif,true);}).catch(()=>{});
 
 const D={ tr:{},
- en:{etiket:'Work order · 15 live · Istanbul',h1:'Not a template. A site cut for <span>your</span> business.',
+ en:{etiket:'Work order · 20 live · Istanbul · Cologne · Austin',h1:'Not a template. A site cut for <span>your</span> business.',
   alt:'Sites that turn an Instagram visitor into someone who calls, gets directions and books. We build a free demo first — you only pay if you love it.',
-  cta1:'Free demo',cta2:'See the work',k1:'live sites',k2:'industries',k3:'first draft',k4:'demo cost',
-  bol1:'Work',h2a:'All live. All built for a real business.',ipucu:'Tap a row · opens on the right',canliac:'Open live site ↗',
+  cta1:'Free demo',cta2:'See the work',k1:'live pages',k2:'industries',k3:'first draft',k4:'demo cost',
+  bol1:'Work',h2a:'Twenty live pages. Fifteen for real businesses, five sector samples.',ipucu:'Tap a row · opens on the right',canliac:'Open live site ↗',
   bol2:'Process',h2b:'Three steps. We carry the risk.',a1b:'We look',a1p:'At your Instagram, your space, what your customer is actually searching for. A ten-minute call is enough.',
   a2b:'Draft in 48h',a2p:'A real site with your own photos and your own colour. Free. No obligation if it is not for you.',
   a3b:'We go live',a3p:'The domain is yours, the site is yours. We handle setup — live on Google and in your bio the next day.',
@@ -270,10 +281,10 @@ const D={ tr:{},
   p2e:'Full',p2a:'Multi-section site with a story flow',p2b:'Booking / appointment flow',p2c:'Instagram feed + Google reviews',p2d:'Local SEO + Google Maps setup',
   p3e:'Care',p3a:'Content and price updates',p3b:'New photos / campaign sections',p3c:'Monthly visitor report',p3d:'Maintenance, backups, security',
   h2d:'Do not decide before you see your own site.',sonalt:'Send your business name and we will send back a demo built with your own photos within 48 hours. Free.'},
- de:{etiket:'Auftrag · 15 live · Istanbul',h1:'Keine Vorlage. Eine Seite, für <span>Ihren</span> Betrieb geschnitten.',
+ de:{etiket:'Auftrag · 20 live · Istanbul · Köln · Austin',h1:'Keine Vorlage. Eine Seite, für <span>Ihren</span> Betrieb geschnitten.',
   alt:'Seiten, die aus einem Instagram-Besucher einen Anruf, eine Wegbeschreibung und einen Termin machen. Wir bauen zuerst einen kostenlosen Entwurf — Sie zahlen nur, wenn er gefällt.',
   cta1:'Kostenloser Entwurf',cta2:'Arbeiten ansehen',k1:'Live-Seiten',k2:'Branchen',k3:'erster Entwurf',k4:'Entwurfskosten',
-  bol1:'Arbeiten',h2a:'Alle live. Alle für einen echten Betrieb gebaut.',ipucu:'Zeile antippen · öffnet rechts',canliac:'Live-Seite öffnen ↗',
+  bol1:'Arbeiten',h2a:'Zwanzig Live-Seiten. Fünfzehn für echte Betriebe, fünf Branchenbeispiele.',ipucu:'Zeile antippen · öffnet rechts',canliac:'Live-Seite öffnen ↗',
   bol2:'Ablauf',h2b:'Drei Schritte. Das Risiko tragen wir.',a1b:'Wir schauen',a1p:'Auf Ihr Instagram, Ihren Betrieb, danach was Ihre Kundschaft wirklich sucht. Zehn Minuten genügen.',
   a2b:'Entwurf in 48 Std.',a2p:'Eine echte Seite mit Ihren eigenen Fotos und Ihrer eigenen Farbe. Kostenlos und unverbindlich.',
   a3b:'Wir gehen live',a3p:'Domain und Seite gehören Ihnen. Die Einrichtung übernehmen wir — am nächsten Tag online.',
@@ -322,13 +333,13 @@ function sec(n,sessiz){
 }
 function ciz(){
   const ix=document.getElementById('index'),mb=document.getElementById('mobil');
-  ix.innerHTML=ISLER.map((i,n)=>`<button class="sat${n===aktif?' on':''}" aria-label="${i.ad}"><span class="bicak"></span><span class="ad">${harflendir(i.ad)}</span><span class="sek">${i.sek[dil]||i.sek.tr}</span></button>`).join('');
+  ix.innerHTML=ISLER.map((i,n)=>`<button class="sat${n===aktif?' on':''}" aria-label="${i.ad}"><span class="bicak"></span><span class="ad">${harflendir(i.ad)}${i.kurgu?'<span class="rozet">'+(SOZ.rozet[dil]||SOZ.rozet.tr)+'</span>':''}</span><span class="sek">${i.sek[dil]||i.sek.tr}</span></button>`).join('');
   ix.querySelectorAll('.sat').forEach((b,n)=>{
     b.onclick=()=>sec(n);
     b.onmouseenter=()=>{if(innerWidth>900&&!kilit){kilit=true;sec(n);setTimeout(()=>kilit=false,220)}};
   });
   mb.innerHTML=ISLER.map(i=>{const c=(VINIL[i.s]||['#1B1E19'])[0];
-    return `<a class="mk" href="${CANLI[i.s]||('https://'+i.s+'.vercel.app')}" target="_blank" rel="noopener" style="border-left:3px solid ${c}"><img src="assets/shots/${i.s}.jpg" alt="${i.ad} — canlı site" loading="lazy" decoding="async"><div class="mkalt"><div><div class="ad">${i.ad}</div><div class="olcu">${i.sek[dil]||i.sek.tr}</div></div><span class="olcu">Aç ↗</span></div></a>`}).join('');
+    return `<a class="mk" href="${CANLI[i.s]||('https://'+i.s+'.vercel.app')}" target="_blank" rel="noopener" style="border-left:3px solid ${c}"><img src="assets/shots/${i.s}.jpg" alt="${i.ad} — canlı site" loading="lazy" decoding="async"><div class="mkalt"><div><div class="ad">${i.ad}${i.kurgu?'<span class="rozet">'+(SOZ.rozet[dil]||SOZ.rozet.tr)+'</span>':''}</div><div class="olcu">${i.sek[dil]||i.sek.tr}</div></div><span class="olcu">Aç ↗</span></div></a>`}).join('');
 }
 function waLink(){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(WA_METIN[dil]||WA_METIN.tr)}
 function iletisimBagla(){

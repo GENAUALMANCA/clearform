@@ -1,17 +1,22 @@
 {
+  "barbershop-us": "https://barbershop-us.vercel.app",
   "bonita-nail": "https://bonita-nail.vercel.app",
   "cadde-kuafor": "https://cadde-kuafor.vercel.app",
   "carbo-smash": "https://carbo-smash.vercel.app",
+  "friseur-koeln": "https://friseur-koeln.vercel.app",
   "frunch": "https://frunch.vercel.app",
   "ipek-estetik": "https://ipek-estetik.vercel.app",
   "kadikoy-estetik-dis": "https://kadikoy-estetik-dis.vercel.app",
+  "kosmetik-studio-de": "https://kosmetik-studio-de.vercel.app",
   "koz-smashhouse": "https://koz-smashhouse.vercel.app",
   "moda-meyhanesi": "https://moda-meyhanesi.vercel.app",
   "mola-brunch": "https://mola-brunch.vercel.app",
   "moonlight-pilates": "https://moonlight-pilates.vercel.app",
+  "nail-studio-en": "https://nail-studio-en.vercel.app",
   "pechko": "https://pechko.vercel.app",
   "rafine-moda": "https://rafine-moda.vercel.app",
   "rawsters-coffee": "https://rawsters-coffee.vercel.app",
   "yumma-moda": "https://yumma-moda.vercel.app",
+  "zahnarzt-de": "https://zahnarzt-de.vercel.app",
   "ze-butik": "https://ze-butik.vercel.app"
 }
