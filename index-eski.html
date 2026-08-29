@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Clearform — işletmeler için web sitesi</title>
+<meta name="description" content="Gerçek işletmeler için tasarlanmış, hızlı ve mobil web siteleri. 15 canlı iş. Önce ücretsiz demo, beğenirseniz yayına.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Schibsted+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gece:#0C0E0B; --gece-2:#141712; --mürekkep:#E9EAE4; --sönük:rgba(233,234,228,.62);
+  --cizgi:rgba(233,234,228,.14); --yuzey:rgba(233,234,228,.045);
+  --asit:#D8FF6B; --ev:cubic-bezier(.22,.61,.36,1);
+  --pad:clamp(20px,5vw,72px);
+  --s0:clamp(15px,.95rem + .2vw,17px);
+  --s1:clamp(19px,1.1rem + .5vw,23px);
+  --s7:clamp(34px,9.2vw,92px);
+  --s5:clamp(27px,6.6vw,62px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--gece);color:var(--mürekkep);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:var(--s0);line-height:calc(6px + 2.125ex);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.kap{max-width:1440px;margin:0 auto;padding-inline:var(--pad)}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--sönük)}
+h1,h2,h3,.disp{font-family:Syne,system-ui,sans-serif;font-weight:800;line-height:.92;letter-spacing:-.028em;overflow-wrap:break-word}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto;z-index:60;display:flex;justify-content:space-between;align-items:center;
+    padding:16px var(--pad);background:rgba(12,14,11,.72);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .6s var(--ev)}
+nav.kayd{border-color:var(--cizgi)}
+.logo{font-family:Syne;font-weight:800;font-size:19px;letter-spacing:-.03em}
+.logo i{color:var(--asit);font-style:normal}
+.navsag{display:flex;align-items:center;gap:18px}
+.dil{display:flex;gap:2px;border:1px solid var(--cizgi);border-radius:99px;padding:3px}
+.dil button{background:none;border:0;color:var(--sönük);font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;padding:5px 9px;border-radius:99px;cursor:pointer;transition:.3s var(--ev)}
+.dil button.on{background:var(--mürekkep);color:var(--gece)}
+.cta{display:inline-flex;align-items:center;gap:9px;background:var(--asit);color:#0C0E0B;font-weight:500;
+  padding:11px 20px;border-radius:99px;font-size:14px;transition:transform .3s var(--ev),box-shadow .3s var(--ev)}
+.cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(216,255,107,.22)}
+.cta.hayalet{background:transparent;color:var(--mürekkep);border:1px solid var(--cizgi)}
+
+/* HERO */
+header{padding:clamp(104px,15vh,170px) 0 clamp(48px,7vh,96px)}
+h1{font-size:var(--s7);margin:20px 0 24px;max-width:20ch;max-inline-size:100%}
+h1 em{font-style:normal;color:var(--asit)}
+.girisalt{max-width:52ch;color:var(--sönük);font-size:var(--s1);line-height:1.45}
+.dus{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.serit{display:flex;gap:clamp(20px,4vw,64px);flex-wrap:wrap;margin-top:clamp(48px,8vh,96px);padding-top:26px;border-top:1px solid var(--cizgi)}
+.serit div b{display:block;font-family:Syne;font-weight:800;font-size:clamp(28px,3.2vw,44px);line-height:1}
+.serit div span{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--sönük)}
+
+/* İŞLER — imza an: seçilen iş DÖNEREK gelir */
+section{padding:clamp(64px,11vh,140px) 0}
+.baslik{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(32px,5vh,60px)}
+h2{font-size:var(--s5);max-width:14ch}
+.isler{display:grid;grid-template-columns:minmax(280px,.85fr) 1.15fr;gap:clamp(28px,4vw,64px);align-items:start}
+.index{border-top:1px solid var(--cizgi)}
+.sat{display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:baseline;width:100%;text-align:left;
+  background:none;border:0;border-bottom:1px solid var(--cizgi);color:var(--sönük);cursor:pointer;
+  padding:15px 6px;font:inherit;transition:color .35s var(--ev),padding .35s var(--ev),background .35s var(--ev)}
+.sat .no{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.1em}
+.sat .ad{font-family:Syne;font-weight:600;font-size:clamp(17px,1.15vw,21px);letter-spacing:-.02em;color:var(--mürekkep);opacity:.72;transition:opacity .35s var(--ev)}
+.sat .sek{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+.sat:hover{padding-left:14px;background:var(--yuzey)}
+.sat.on{color:var(--asit)}
+.sat.on .ad{opacity:1}
+.sat.on .no{color:var(--asit)}
+.cerceve{position:relative;perspective:1600px}
+.ekran{position:relative;aspect-ratio:1440/960;border-radius:16px;overflow:hidden;border:1px solid var(--cizgi);background:var(--gece-2);
+  transform-style:preserve-3d;transition:transform .9s var(--ev)}
+.ekran img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;opacity:0;transition:opacity .6s var(--ev)}
+.ekran img.gor{opacity:1;position:absolute;inset:0}
+.ekran.donuyor{transform:rotateY(-9deg) rotateX(1.5deg) scale(.985)}
+.ekranalt{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px}
+.ekranalt .ad{font-family:Syne;font-weight:600;font-size:19px}
+.ekranalt .mono{margin-top:3px}
+.acbtn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--cizgi);border-radius:99px;padding:9px 17px;font-size:13px;transition:.3s var(--ev)}
+.acbtn:hover{border-color:var(--asit);color:var(--asit)}
+.mobilkart{display:none}
+
+/* NASIL */
+.adimlar{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(16px,2vw,26px)}
+.adim{border:1px solid var(--cizgi);border-radius:16px;padding:26px 22px 28px;background:var(--yuzey)}
+.adim h3{font-size:21px;margin:16px 0 9px}
+.adim p{color:var(--sönük);font-size:14.5px}
+
+/* FİYAT */
+.fiyatlar{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(14px,1.6vw,20px)}
+.fiyat{border:1px solid var(--cizgi);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:13px}
+.fiyat.one{border-color:var(--asit);background:rgba(216,255,107,.045)}
+.fiyat .tut{font-family:Syne;font-weight:800;font-size:34px;letter-spacing:-.03em}
+.fiyat ul{list-style:none;color:var(--sönük);font-size:14px;display:grid;gap:7px;margin-top:2px}
+.fiyat li::before{content:"—  ";color:var(--asit)}
+
+/* SON */
+.son{text-align:center;padding:clamp(80px,14vh,170px) 0}
+.son h2{margin:0 auto 26px;max-width:18ch;font-size:var(--s5)}
+footer{border-top:1px solid var(--cizgi);padding:26px 0 34px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.stick{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:70;display:none}
+
+@media (max-width:900px){
+  .isler{grid-template-columns:1fr}
+  .cerceve{display:none}
+  .index{display:none}
+  .mobilkart{display:grid;gap:16px}
+  .mk{border:1px solid var(--cizgi);border-radius:15px;overflow:hidden;background:var(--gece-2)}
+  .mk img{width:100%;display:block;aspect-ratio:16/11;object-fit:cover;object-position:top center}
+  .mkalt{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px 16px}
+  .stick{display:block}
+  nav{padding-inline:18px}
+  h2{max-width:100%}
+  nav .cta{display:none}
+  body{padding-bottom:76px}
+}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important;animation:none !important}.ekran.donuyor{transform:none}}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <a class="logo" href="#">CLEAR<i>FORM</i></a>
+  <div class="navsag">
+    <div class="dil" id="dil"><button data-l="tr" class="on">TR</button><button data-l="en">EN</button><button data-l="de">DE</button></div>
+    <a class="cta" id="navcta" href="#iletisim">WhatsApp</a>
+  </div>
+</nav>
+
+<header class="kap">
+  <p class="mono" data-t="etiket">// bağımsız web stüdyosu — istanbul</p>
+  <h1 data-t="h1">Şablon değil. <em>Sizin</em> işiniz için tasarlanmış site.</h1>
+  <p class="girisalt" data-t="alt">Instagram'dan gelen kişiyi arayan, yol tarifi alan, randevu isteyen müşteriye çeviren siteler. Önce ücretsiz demo hazırlarız — beğenirseniz yayına alırız.</p>
+  <div class="dus">
+    <a class="cta" id="cta1" href="#iletisim" data-t="cta1">Ücretsiz demo iste</a>
+    <a class="cta hayalet" href="#isler" data-t="cta2">İşleri gör</a>
+  </div>
+  <div class="serit">
+    <div><b>15</b><span data-t="k1">canlı iş</span></div>
+    <div><b>9</b><span data-t="k2">sektör</span></div>
+    <div><b>48<small style="font-size:.5em"> </small>s</b><span data-t="k3">ilk demo</span></div>
+    <div><b>1</b><span data-t="k4">tek dokunuş cta</span></div>
+  </div>
+</header>
+
+<section class="kap" id="isler">
+  <div class="baslik">
+    <div><p class="mono">// 01 — işler</p><h2 data-t="h2a">Hepsi canlı. Hepsi gerçek bir işletme için.</h2></div>
+    <p class="mono" data-t="ipucu">satıra dokun → sağda açılır</p>
+  </div>
+  <div class="isler">
+    <div class="index" id="index"></div>
+    <div>
+      <div class="cerceve"><div class="ekran" id="ekran"></div></div>
+      <div class="ekranalt">
+        <div><div class="ad" id="aktifAd"></div><div class="mono" id="aktifSek"></div></div>
+        <a class="acbtn" id="acLink" target="_blank" rel="noopener" data-t="canliac">canlı siteyi aç ↗</a>
+      </div>
+    </div>
+    <div class="mobilkart" id="mobil"></div>
+  </div>
+</section>
+
+<section class="kap">
+  <div class="baslik"><div><p class="mono">// 02 — nasıl</p><h2 data-t="h2b">Üç adım. Riski biz alıyoruz.</h2></div></div>
+  <div class="adimlar">
+    <div class="adim"><p class="mono">01</p><h3 data-t="a1b">Bakarız</h3><p data-t="a1p">Instagram'ınıza, mekânınıza, müşterinizin ne aradığına bakarız. 10 dakikalık bir konuşma yeter.</p></div>
+    <div class="adim"><p class="mono">02</p><h3 data-t="a2b">48 saatte demo</h3><p data-t="a2p">Kendi fotoğraflarınızla, kendi renginizle gerçek bir site kurarız. Ücretsiz. Beğenmezseniz yükümlülük yok.</p></div>
+    <div class="adim"><p class="mono">03</p><h3 data-t="a3b">Yayına alırız</h3><p data-t="a3p">Alan adı sizin, site sizin. Kurulumu biz yaparız; Google'da ve Instagram bio'nuzda ertesi gün canlıdır.</p></div>
+  </div>
+</section>
+
+<section class="kap">
+  <div class="baslik"><div><p class="mono">// 03 — fiyat</p><h2 data-t="h2c">Fiyat sayfada yazar.</h2></div><p class="mono" data-t="fnot">tek seferlik · kdv hariç</p></div>
+  <div class="fiyatlar">
+    <div class="fiyat"><p class="mono" data-t="p1e">vitrin</p><div class="tut">₺14.000</div><ul>
+      <li data-t="p1a">Tek sayfa, tam animasyonlu</li><li data-t="p1b">Menü / hizmet + galeri</li><li data-t="p1c">WhatsApp + yol tarifi butonu</li><li data-t="p1d">Mobil öncelikli, 1 sn açılır</li></ul></div>
+    <div class="fiyat one"><p class="mono" data-t="p2e">tam ★</p><div class="tut">₺26.000</div><ul>
+      <li data-t="p2a">Çok bölümlü site + hikâye akışı</li><li data-t="p2b">Rezervasyon / randevu akışı</li><li data-t="p2c">Instagram akışı + Google yorumları</li><li data-t="p2d">Yerel SEO + Google Haritalar kurulumu</li></ul></div>
+    <div class="fiyat"><p class="mono" data-t="p3e">bakım</p><div class="tut">₺2.500<small style="font-size:.38em;letter-spacing:0"> /ay</small></div><ul>
+      <li data-t="p3a">İçerik ve fiyat güncellemeleri</li><li data-t="p3b">Yeni fotoğraf / kampanya bölümü</li><li data-t="p3c">Aylık ziyaretçi raporu</li><li data-t="p3d">Teknik bakım, yedek, güvenlik</li></ul></div>
+  </div>
+</section>
+
+<section class="son kap" id="iletisim">
+  <p class="mono">// 04</p>
+  <h2 data-t="h2d">Sitenizi görmeden karar vermeyin.</h2>
+  <p class="girisalt" style="margin:0 auto 30px" data-t="sonalt">İşletmenizin adını yazın, 48 saat içinde kendi fotoğraflarınızla hazırlanmış demoyu gönderelim. Ücretsiz.</p>
+  <a class="cta" id="cta2" href="#" data-t="cta1">Ücretsiz demo iste</a>
+</section>
+
+<footer class="kap">
+  <span class="mono">© 2026 Clearform</span>
+  <span class="mono" id="footIletisim">whatsapp · e-posta</span>
+</footer>
+<a class="cta stick" id="stickcta" href="#iletisim" data-t="cta1">Ücretsiz demo iste</a>
+
+<script>
+/* ---- İLETİŞİM (TEK KAYNAK — numarayı buraya yaz) ---- */
+const WA='4915756262699';         // Arda · WhatsApp (+49 157 5626 2699)
+const MAIL='';                    // outreach maili gelince doldur (boşken footer'da gösterilmez)
+const WA_METIN={tr:'Merhaba, işletmem için ücretsiz demo istiyorum.',en:'Hi, I would like a free demo for my business.',de:'Guten Tag, ich hätte gerne einen kostenlosen Entwurf für meinen Betrieb.'};
+function waLink(){return `https://wa.me/${WA}?text=`+encodeURIComponent(WA_METIN[dil]||WA_METIN.tr)}
+/* ---- İŞLER ---- */
+const ISLER=[
+ {s:'rafine-moda',ad:'Rafine Moda',sek:{tr:'Kuaför · Moda, İstanbul',en:'Hair salon · Istanbul',de:'Friseur · Istanbul'}},
+ {s:'moonlight-pilates',ad:'Moonlight Pilates',sek:{tr:'Pilates stüdyosu · Kadıköy',en:'Pilates studio · Istanbul',de:'Pilates-Studio · Istanbul'}},
+ {s:'kadikoy-estetik-dis',ad:'Kadıköy Estetik Diş',sek:{tr:'Diş kliniği · Kadıköy',en:'Dental clinic · Istanbul',de:'Zahnklinik · Istanbul'}},
+ {s:'ipek-estetik',ad:'İpek Estetik',sek:{tr:'Güzellik & estetik',en:'Beauty & aesthetics',de:'Kosmetik & Ästhetik'}},
+ {s:'cadde-kuafor',ad:'Cadde Kuaför',sek:{tr:'Kuaför · Caddebostan',en:'Hair salon · Istanbul',de:'Friseur · Istanbul'}},
+ {s:'bonita-nail',ad:'Bonita Nail',sek:{tr:'Tırnak stüdyosu · Kadıköy',en:'Nail studio · Istanbul',de:'Nagelstudio · Istanbul'}},
+ {s:'koz-smashhouse',ad:'KÖZ Smashhouse',sek:{tr:'Burger · gece mutfağı',en:'Smash burger house',de:'Burger-Restaurant'}},
+ {s:'carbo-smash',ad:'Carbo',sek:{tr:'Smash burger',en:'Smash burger',de:'Smash Burger'}},
+ {s:'moda-meyhanesi',ad:'Moda Meyhanesi',sek:{tr:'Meyhane · Moda',en:'Turkish tavern · Istanbul',de:'Taverne · Istanbul'}},
+ {s:'rawsters-coffee',ad:'Rawsters',sek:{tr:'Kahve kavurma · Kolektif',en:'Coffee roastery',de:'Kaffeerösterei'}},
+ {s:'mola-brunch',ad:'Mola',sek:{tr:'Brunch & kahvaltı',en:'Brunch & breakfast',de:'Brunch & Frühstück'}},
+ {s:'frunch',ad:'Frunch',sek:{tr:'Brunch · Moda',en:'Brunch · Istanbul',de:'Brunch · Istanbul'}},
+ {s:'yumma-moda',ad:'Yumma',sek:{tr:'Sağlıklı mutfak · Moda',en:'Healthy kitchen',de:'Gesunde Küche'}},
+ {s:'pechko',ad:'Pechko',sek:{tr:'Restoran · Moda',en:'Restaurant · Istanbul',de:'Restaurant · Istanbul'}},
+ {s:'ze-butik',ad:'Z&E Butik',sek:{tr:'Abiye butik',en:'Evening wear boutique',de:'Abendmode-Boutique'}},
+];
+const CANLI={};
+fetch('canli.json').then(r=>r.json()).then(j=>Object.assign(CANLI,j)).catch(()=>{});
+const URLS=s=>`https://${s}-demo.netlify.app`;
+
+/* ---- DİL ---- */
+const D={
+ tr:{},
+ en:{etiket:'// independent web studio — istanbul',h1:'Not a template. A site built for <em>your</em> business.',
+  alt:'Sites that turn an Instagram visitor into someone who calls, gets directions and books. We build a free demo first — you only pay if you love it.',
+  cta1:'Get a free demo',cta2:'See the work',k1:'live sites',k2:'industries',k3:'first draft',k4:'single tap cta',
+  h2a:'All live. All built for a real business.',ipucu:'tap a row → opens on the right',canliac:'open live site ↗',
+  h2b:'Three steps. We carry the risk.',a1b:'We look',a1p:'At your Instagram, your space, what your customer is actually searching for. A ten-minute call is enough.',
+  a2b:'Draft in 48h',a2p:'A real site with your own photos and colours. Free. No obligation if it is not for you.',
+  a3b:'We go live',a3p:'The domain is yours, the site is yours. We handle setup — live on Google and in your bio the next day.',
+  h2c:'The price is on the page.',fnot:'one-off · excl. tax',
+  p1e:'showcase',p1a:'One page, fully animated',p1b:'Menu / services + gallery',p1c:'WhatsApp + directions button',p1d:'Mobile first, loads in 1s',
+  p2e:'full ★',p2a:'Multi-section site with a story flow',p2b:'Booking / appointment flow',p2c:'Instagram feed + Google reviews',p2d:'Local SEO + Google Maps setup',
+  p3e:'care',p3a:'Content and price updates',p3b:'New photos / campaign sections',p3c:'Monthly visitor report',p3d:'Maintenance, backups, security',
+  h2d:'Do not decide before you see your own site.',sonalt:'Send your business name and we will send back a demo built with your own photos within 48 hours. Free.'},
+ de:{etiket:'// unabhängiges webstudio — istanbul',h1:'Keine Vorlage. Eine Seite für <em>Ihren</em> Betrieb.',
+  alt:'Seiten, die aus einem Instagram-Besucher einen Anruf, eine Wegbeschreibung und einen Termin machen. Wir bauen zuerst einen kostenlosen Entwurf — Sie zahlen nur, wenn er gefällt.',
+  cta1:'Kostenlosen Entwurf anfragen',cta2:'Arbeiten ansehen',k1:'live-seiten',k2:'branchen',k3:'erster entwurf',k4:'ein-klick-cta',
+  h2a:'Alle live. Alle für einen echten Betrieb gebaut.',ipucu:'zeile antippen → öffnet rechts',canliac:'live-seite öffnen ↗',
+  h2b:'Drei Schritte. Das Risiko tragen wir.',a1b:'Wir schauen',a1p:'Auf Ihr Instagram, Ihren Betrieb, danach was Ihre Kundschaft wirklich sucht. Zehn Minuten genügen.',
+  a2b:'Entwurf in 48 Std.',a2p:'Eine echte Seite mit Ihren eigenen Fotos und Farben. Kostenlos und unverbindlich.',
+  a3b:'Wir gehen live',a3p:'Domain und Seite gehören Ihnen. Die Einrichtung übernehmen wir — am nächsten Tag online.',
+  h2c:'Der Preis steht auf der Seite.',fnot:'einmalig · zzgl. MwSt.',
+  p1e:'schaufenster',p1a:'Eine Seite, voll animiert',p1b:'Speisekarte / Leistungen + Galerie',p1c:'WhatsApp- und Routen-Button',p1d:'Mobile first, lädt in 1 Sek.',
+  p2e:'komplett ★',p2a:'Mehrseitig mit Erzählfluss',p2b:'Buchungs- / Terminstrecke',p2c:'Instagram-Feed + Google-Bewertungen',p2d:'Lokales SEO + Google-Maps-Einrichtung',
+  p3e:'pflege',p3a:'Inhalts- und Preisaktualisierungen',p3b:'Neue Fotos / Kampagnenbereiche',p3c:'Monatlicher Besucherbericht',p3d:'Wartung, Backups, Sicherheit',
+  h2d:'Entscheiden Sie erst, wenn Sie Ihre eigene Seite gesehen haben.',sonalt:'Schicken Sie uns Ihren Betriebsnamen — innerhalb von 48 Stunden erhalten Sie einen Entwurf mit Ihren eigenen Fotos. Kostenlos.'}
+};
+/* TR = HTML'de yazılı olan; ilk yüklemede yakala */
+document.querySelectorAll('[data-t]').forEach(el=>{D.tr[el.dataset.t]=el.innerHTML});
+
+let dil='tr';
+function dilAyarla(l){
+  dil=l; document.documentElement.lang=l;
+  document.querySelectorAll('[data-t]').forEach(el=>{const v=(D[l]||{})[el.dataset.t];if(v!==undefined)el.innerHTML=v});
+  document.querySelectorAll('#dil button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  ciz(); sec(aktif,true); if(window.iletisimBagla)iletisimBagla();
+  try{localStorage.setItem('cf_dil',l)}catch(e){}
+}
+document.querySelectorAll('#dil button').forEach(b=>b.onclick=()=>dilAyarla(b.dataset.l));
+
+/* ---- İMZA AN: seçilen iş DÖNEREK gelir ---- */
+const ekran=document.getElementById('ekran');
+let aktif=0, kilit=false, otomatik;
+ISLER.forEach(i=>{const im=new Image();im.src='assets/shots/'+i.s+'.jpg';im.alt=i.ad;im.loading='lazy';im.dataset.s=i.s;ekran.appendChild(im)});
+function sec(n,sessiz){
+  aktif=n; const i=ISLER[n];
+  document.querySelectorAll('#index .sat').forEach((s,x)=>s.classList.toggle('on',x===n));
+  document.getElementById('aktifAd').textContent=i.ad;
+  document.getElementById('aktifSek').textContent=i.sek[dil]||i.sek.tr;
+  document.getElementById('acLink').href=CANLI[i.s]||URLS(i.s);
+  if(sessiz){goster(i.s);return}
+  if(kilit)return; kilit=true;
+  ekran.classList.add('donuyor');
+  setTimeout(()=>{goster(i.s);ekran.classList.remove('donuyor');setTimeout(()=>kilit=false,450)},260);
+}
+function goster(s){ekran.querySelectorAll('img').forEach(im=>im.classList.toggle('gor',im.dataset.s===s))}
+function ciz(){
+  const ix=document.getElementById('index'), mb=document.getElementById('mobil');
+  ix.innerHTML=ISLER.map((i,n)=>`<button class="sat${n===aktif?' on':''}"><span class="no">${String(n+1).padStart(2,'0')}</span><span class="ad">${i.ad}</span><span class="sek">${i.sek[dil]||i.sek.tr}</span></button>`).join('');
+  ix.querySelectorAll('.sat').forEach((b,n)=>{b.onclick=()=>{sec(n);dur()};b.onmouseenter=()=>{if(window.innerWidth>900){sec(n);dur()}}});
+  mb.innerHTML=ISLER.map(i=>`<a class="mk" href="${CANLI[i.s]||URLS(i.s)}" target="_blank" rel="noopener"><img src="assets/shots/${i.s}.jpg" alt="${i.ad}" loading="lazy"><div class="mkalt"><div><div class="ad" style="font-family:Syne;font-weight:600">${i.ad}</div><div class="mono">${i.sek[dil]||i.sek.tr}</div></div><span class="mono">aç ↗</span></div></a>`).join('');
+}
+function dur(){clearInterval(otomatik);otomatik=null}
+const azHareket=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function basla(){if(azHareket||window.innerWidth<=900)return;otomatik=setInterval(()=>sec((aktif+1)%ISLER.length),4200)}
+ciz(); sec(0,true);
+/* iletişim bağla */
+window.iletisimBagla=function iletisimBagla(){
+  const l=waLink();
+  ['navcta','cta1','cta2','stickcta'].forEach(id=>{const e=document.getElementById(id);if(e){e.href=l;e.target='_blank';e.rel='noopener'}});
+  document.getElementById('footIletisim').innerHTML=`<a href="${l}" target="_blank" rel="noopener">whatsapp · +49 157 5626 2699</a>`+(MAIL?` · <a href="mailto:${MAIL}">${MAIL}</a>`:'');
+}
+iletisimBagla();
+new IntersectionObserver(e=>{e[0].isIntersecting?(otomatik||basla()):dur()},{threshold:.35}).observe(document.getElementById('isler'));
+addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('kayd',scrollY>20),{passive:true});
+try{const k=localStorage.getItem('cf_dil');if(k&&k!=='tr')dilAyarla(k);}catch(e){}
+/* tarayıcı diline göre ilk açılış */
+if(!localStorage.getItem('cf_dil')){const n=(navigator.language||'tr').slice(0,2);if(n==='de')dilAyarla('de');else if(n!=='tr')dilAyarla('en');}
+</script>
+</body></html>

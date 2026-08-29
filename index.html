@@ -6,155 +6,180 @@
 <title>Clearform — işletmeler için web sitesi</title>
 <meta name="description" content="Gerçek işletmeler için tasarlanmış, hızlı ve mobil web siteleri. 15 canlı iş. Önce ücretsiz demo, beğenirseniz yayına.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;800&family=Schibsted+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700&family=Wix+Madefor+Text:wght@400;500&family=Chivo+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --gece:#0C0E0B; --gece-2:#141712; --mürekkep:#E9EAE4; --sönük:rgba(233,234,228,.62);
-  --cizgi:rgba(233,234,228,.14); --yuzey:rgba(233,234,228,.045);
-  --asit:#D8FF6B; --ev:cubic-bezier(.22,.61,.36,1);
+  --levha:#DEE1DA;      /* zemin — alüminyum kompozit */
+  --kutu:#F7F8F5;       /* panel — ışıklı kutu yüzeyi */
+  --murekkep:#1B1E19;   /* vinil siyahı */
+  --not:#565B52;        /* montaj notu grisi */
+  --kesim:rgba(27,30,25,.14);
+  --vinil:#1B1E19;      /* DEĞİŞKEN — seçili müşterinin rengi; boşta mürekkep */
+  --vinil-yazi:#1B1E19;
+  --ev:cubic-bezier(.22,.61,.36,1);
   --pad:clamp(20px,5vw,72px);
+  --r-kesim:0px; --r-kutu:10px; --r-hap:999px;
   --s0:clamp(15px,.95rem + .2vw,17px);
-  --s1:clamp(19px,1.1rem + .5vw,23px);
-  --s7:clamp(34px,9.2vw,92px);
-  --s5:clamp(27px,6.6vw,62px);
+  --s1:clamp(18px,1.05rem + .45vw,22px);
+  --s5:clamp(27px,6.2vw,58px);
+  --s7:clamp(34px,8.6vw,88px);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--gece);color:var(--mürekkep);font-family:"Schibsted Grotesk",system-ui,sans-serif;font-size:var(--s0);line-height:calc(6px + 2.125ex);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-.kap{max-width:1440px;margin:0 auto;padding-inline:var(--pad)}
-.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:var(--sönük)}
-h1,h2,h3,.disp{font-family:Syne,system-ui,sans-serif;font-weight:800;line-height:.92;letter-spacing:-.028em;overflow-wrap:break-word}
+body{background:var(--levha);color:var(--murekkep);font-family:"Wix Madefor Text",system-ui,sans-serif;
+  font-size:var(--s0);line-height:calc(6px + 2.125ex);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.kap{max-width:1400px;margin:0 auto;padding-inline:var(--pad)}
+h1,h2,h3,.disp{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;line-height:.94;letter-spacing:-.024em;overflow-wrap:break-word}
 a{color:inherit;text-decoration:none}
+/* mono SADECE ölçü/süre/fiyat — bölüm slug'ı olarak ASLA */
+.olcu{font-family:"Chivo Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--not)}
 
 /* NAV */
-nav{position:fixed;inset:0 0 auto;z-index:60;display:flex;justify-content:space-between;align-items:center;
-    padding:16px var(--pad);background:rgba(12,14,11,.72);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .6s var(--ev)}
-nav.kayd{border-color:var(--cizgi)}
-.logo{font-family:Syne;font-weight:800;font-size:19px;letter-spacing:-.03em}
-.logo i{color:var(--asit);font-style:normal}
-.navsag{display:flex;align-items:center;gap:18px}
-.dil{display:flex;gap:2px;border:1px solid var(--cizgi);border-radius:99px;padding:3px}
-.dil button{background:none;border:0;color:var(--sönük);font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.1em;
-  text-transform:uppercase;padding:5px 9px;border-radius:99px;cursor:pointer;transition:.3s var(--ev)}
-.dil button.on{background:var(--mürekkep);color:var(--gece)}
-.cta{display:inline-flex;align-items:center;gap:9px;background:var(--asit);color:#0C0E0B;font-weight:500;
-  padding:11px 20px;border-radius:99px;font-size:14px;transition:transform .3s var(--ev),box-shadow .3s var(--ev)}
-.cta:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(216,255,107,.22)}
-.cta.hayalet{background:transparent;color:var(--mürekkep);border:1px solid var(--cizgi)}
+nav{position:fixed;inset:0 0 auto;z-index:60;display:flex;justify-content:space-between;align-items:center;gap:16px;
+  padding:14px var(--pad);background:rgba(222,225,218,.86);backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:border-color .45s var(--ev)}
+nav.kayd{border-bottom-color:var(--kesim)}
+.logo{font-family:"Bricolage Grotesque";font-weight:700;font-size:19px;letter-spacing:-.03em;min-height:44px;display:inline-flex;align-items:center}
+.navsag{display:flex;align-items:center;gap:14px}
+.dil{display:flex;border:1px solid var(--kesim);border-radius:var(--r-kesim)}
+.dil button{background:none;border:0;border-right:1px solid var(--kesim);color:var(--not);
+  font-family:"Chivo Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:0 11px;min-height:44px;min-width:44px;cursor:pointer;transition:background .3s var(--ev),color .3s var(--ev)}
+.dil button:last-child{border-right:0}
+.dil button.on{background:var(--murekkep);color:var(--levha)}
+.cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--murekkep);color:var(--levha);
+  font-weight:500;padding:0 20px;min-height:44px;border-radius:var(--r-kesim);font-size:14.5px;
+  transition:background .3s var(--ev)}
+.cta:hover{background:var(--vinil-yazi)}
+.cta.hayalet{background:transparent;color:var(--murekkep);border:1px solid var(--murekkep)}
+.cta.hayalet:hover{background:var(--murekkep);color:var(--levha)}
 
 /* HERO */
-header{padding:clamp(104px,15vh,170px) 0 clamp(48px,7vh,96px)}
-h1{font-size:var(--s7);margin:20px 0 24px;max-width:20ch;max-inline-size:100%}
-h1 em{font-style:normal;color:var(--asit)}
-.girisalt{max-width:52ch;color:var(--sönük);font-size:var(--s1);line-height:1.45}
-.dus{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
-.serit{display:flex;gap:clamp(20px,4vw,64px);flex-wrap:wrap;margin-top:clamp(48px,8vh,96px);padding-top:26px;border-top:1px solid var(--cizgi)}
-.serit div b{display:block;font-family:Syne;font-weight:800;font-size:clamp(28px,3.2vw,44px);line-height:1}
-.serit div span{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--sönük)}
+header{padding:clamp(102px,14vh,164px) 0 clamp(44px,6vh,84px)}
+h1{font-size:var(--s7);margin:18px 0 22px;max-width:19ch}
+h1 span{position:relative;white-space:nowrap}
+h1 span::after{content:"";position:absolute;left:0;right:0;bottom:.1em;height:3px;background:var(--vinil);transition:background .45s var(--ev)}
+.girisalt{max-width:50ch;color:var(--not);font-size:var(--s1);line-height:1.45}
+.dus{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.serit{display:flex;gap:clamp(18px,4vw,56px);flex-wrap:wrap;margin-top:clamp(42px,7vh,84px);padding-top:22px;border-top:1px solid var(--kesim)}
+.serit b{display:block;font-family:"Chivo Mono",monospace;font-weight:400;font-size:clamp(26px,3vw,40px);line-height:1;letter-spacing:-.02em}
+.serit span{font-family:"Chivo Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--not)}
 
-/* İŞLER — imza an: seçilen iş DÖNEREK gelir */
-section{padding:clamp(64px,11vh,140px) 0}
-.baslik{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:clamp(32px,5vh,60px)}
-h2{font-size:var(--s5);max-width:14ch}
-.isler{display:grid;grid-template-columns:minmax(280px,.85fr) 1.15fr;gap:clamp(28px,4vw,64px);align-items:start}
-.index{border-top:1px solid var(--cizgi)}
-.sat{display:grid;grid-template-columns:34px 1fr auto;gap:14px;align-items:baseline;width:100%;text-align:left;
-  background:none;border:0;border-bottom:1px solid var(--cizgi);color:var(--sönük);cursor:pointer;
-  padding:15px 6px;font:inherit;transition:color .35s var(--ev),padding .35s var(--ev),background .35s var(--ev)}
-.sat .no{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.1em}
-.sat .ad{font-family:Syne;font-weight:600;font-size:clamp(17px,1.15vw,21px);letter-spacing:-.02em;color:var(--mürekkep);opacity:.72;transition:opacity .35s var(--ev)}
-.sat .sek{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase}
-.sat:hover{padding-left:14px;background:var(--yuzey)}
-.sat.on{color:var(--asit)}
-.sat.on .ad{opacity:1}
-.sat.on .no{color:var(--asit)}
-.cerceve{position:relative;perspective:1600px}
-.ekran{position:relative;aspect-ratio:1440/960;border-radius:16px;overflow:hidden;border:1px solid var(--cizgi);background:var(--gece-2);
-  transform-style:preserve-3d;transition:transform .9s var(--ev)}
-.ekran img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;opacity:0;transition:opacity .6s var(--ev)}
-.ekran img.gor{opacity:1;position:absolute;inset:0}
-.ekran.donuyor{transform:rotateY(-9deg) rotateX(1.5deg) scale(.985)}
-.ekranalt{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:16px}
-.ekranalt .ad{font-family:Syne;font-weight:600;font-size:19px}
-.ekranalt .mono{margin-top:3px}
-.acbtn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--cizgi);border-radius:99px;padding:9px 17px;font-size:13px;transition:.3s var(--ev)}
-.acbtn:hover{border-color:var(--asit);color:var(--asit)}
+section{padding:clamp(58px,10vh,124px) 0}
+.baslik{display:flex;justify-content:space-between;align-items:flex-end;gap:22px;flex-wrap:wrap;margin-bottom:clamp(28px,4.5vh,52px)}
+h2{font-size:var(--s5);max-width:15ch}
+
+/* İŞLER — imza an: VİNİL KESİM */
+.isler{display:grid;grid-template-columns:minmax(300px,.95fr) 1.05fr;gap:clamp(26px,4vw,60px);align-items:start}
+.index{border-top:1px solid var(--kesim)}
+.sat{position:relative;display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;width:100%;text-align:left;
+  background:none;border:0;border-bottom:1px solid var(--kesim);border-radius:var(--r-kesim);color:var(--not);cursor:pointer;
+  padding:16px 8px 16px 18px;font:inherit;min-height:44px;transition:background .35s var(--ev)}
+.sat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--vinil);
+  transform:scaleY(0);transform-origin:top;transition:transform .35s var(--ev)}
+.sat.on::before{transform:scaleY(1)}
+.sat:hover{background:rgba(27,30,25,.035)}
+.sat .ad{font-family:"Bricolage Grotesque";font-weight:700;font-size:clamp(17px,1.15vw,21px);letter-spacing:-.02em;color:var(--murekkep)}
+.sat .ad i{display:inline-block;font-style:normal;transition:transform .34s var(--ev),color .34s var(--ev)}
+.sat.on .ad i{transform:translateY(-2px) rotate(.4deg);color:var(--vinil-yazi)}
+.sat .sek{font-family:"Chivo Mono",monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase}
+/* plotter bıçağı */
+.bicak{position:absolute;top:0;bottom:0;width:1px;background:var(--vinil);left:0;opacity:0;pointer-events:none}
+.sat.kesiyor .bicak{animation:kes .52s var(--ev) forwards}
+@keyframes kes{0%{left:0;opacity:1}92%{opacity:1}100%{left:100%;opacity:0}}
+
+.cerceve{position:sticky;top:92px}
+.ekran{position:relative;aspect-ratio:1440/960;border-radius:var(--r-kutu);overflow:hidden;background:var(--kutu);
+  border:1px solid var(--kesim);box-shadow:0 0 0 0 rgba(0,0,0,0);transition:box-shadow .5s var(--ev)}
+.ekran.yanik{box-shadow:0 0 0 2px var(--vinil),0 18px 50px -22px var(--vinil)}
+.ekran img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0;transition:opacity .45s var(--ev)}
+.ekran img.gor{opacity:1}
+.ekranalt{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:14px}
+.ekranalt .ad{font-family:"Bricolage Grotesque";font-weight:700;font-size:19px}
+.acbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--murekkep);
+  border-radius:var(--r-kesim);padding:0 16px;min-height:44px;font-size:13.5px;transition:background .3s var(--ev),color .3s var(--ev)}
+.acbtn:hover{background:var(--murekkep);color:var(--levha)}
 .mobilkart{display:none}
 
-/* NASIL */
-.adimlar{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(16px,2vw,26px)}
-.adim{border:1px solid var(--cizgi);border-radius:16px;padding:26px 22px 28px;background:var(--yuzey)}
-.adim h3{font-size:21px;margin:16px 0 9px}
-.adim p{color:var(--sönük);font-size:14.5px}
+.adimlar{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(14px,1.8vw,22px)}
+.adim{border:1px solid var(--kesim);border-radius:var(--r-kutu);padding:24px 22px 26px;background:var(--kutu)}
+.adim h3{font-size:20px;margin:14px 0 8px}
+.adim p{color:var(--not);font-size:14.5px}
 
-/* FİYAT */
-.fiyatlar{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(14px,1.6vw,20px)}
-.fiyat{border:1px solid var(--cizgi);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;gap:13px}
-.fiyat.one{border-color:var(--asit);background:rgba(216,255,107,.045)}
-.fiyat .tut{font-family:Syne;font-weight:800;font-size:34px;letter-spacing:-.03em}
-.fiyat ul{list-style:none;color:var(--sönük);font-size:14px;display:grid;gap:7px;margin-top:2px}
-.fiyat li::before{content:"—  ";color:var(--asit)}
+.fiyatlar{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:clamp(12px,1.5vw,18px)}
+.fiyat{border:1px solid var(--kesim);border-radius:var(--r-kutu);padding:26px 22px;background:var(--kutu);display:flex;flex-direction:column;gap:12px}
+.fiyat.one{border-color:var(--vinil);border-width:2px;transition:border-color .45s var(--ev)}
+.fiyat .tut{font-family:"Chivo Mono",monospace;font-size:31px;letter-spacing:-.02em}
+.fiyat ul{list-style:none;color:var(--not);font-size:14px;display:grid;gap:6px}
+.fiyat li{padding-left:16px;position:relative}
+.fiyat li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:1px;background:var(--vinil)}
 
-/* SON */
-.son{text-align:center;padding:clamp(80px,14vh,170px) 0}
-.son h2{margin:0 auto 26px;max-width:18ch;font-size:var(--s5)}
-footer{border-top:1px solid var(--cizgi);padding:26px 0 34px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.stick{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:70;display:none}
+.son{text-align:center;padding:clamp(70px,12vh,150px) 0}
+.son h2{margin:0 auto 22px;max-width:19ch}
+.son .girisalt{margin:0 auto 26px}
+footer{border-top:1px solid var(--kesim);padding:22px 0 30px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+footer a{display:inline-flex;align-items:center;min-height:44px}
+footer .olcu{display:inline-flex;align-items:center;min-height:44px}
+.stick{position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:70;display:none;border-radius:var(--r-hap);padding:0 24px}
 
 @media (max-width:900px){
   .isler{grid-template-columns:1fr}
-  .cerceve{display:none}
-  .index{display:none}
-  .mobilkart{display:grid;gap:16px}
-  .mk{border:1px solid var(--cizgi);border-radius:15px;overflow:hidden;background:var(--gece-2)}
+  .cerceve,.index{display:none}
+  .mobilkart{display:grid;gap:14px}
+  .mk{border:1px solid var(--kesim);border-radius:var(--r-kutu);overflow:hidden;background:var(--kutu);display:block}
   .mk img{width:100%;display:block;aspect-ratio:16/11;object-fit:cover;object-position:top center}
-  .mkalt{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px 16px}
-  .stick{display:block}
-  nav{padding-inline:18px}
-  h2{max-width:100%}
+  .mkalt{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 15px 15px;min-height:44px}
+  .mk .ad{font-family:"Bricolage Grotesque";font-weight:700;font-size:17px}
+  .stick{display:inline-flex}
   nav .cta{display:none}
-  body{padding-bottom:76px}
+  body{padding-bottom:74px}
 }
-@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important;animation:none !important}.ekran.donuyor{transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms !important;animation:none !important;scroll-behavior:auto !important}
+  .sat.on .ad i{transform:none}
+}
+:focus-visible{outline:2.5px solid var(--murekkep);outline-offset:3px}
 </style>
 </head>
 <body>
 <nav id="nav">
-  <a class="logo" href="#">CLEAR<i>FORM</i></a>
+  <a class="logo" href="#">CLEARFORM</a>
   <div class="navsag">
     <div class="dil" id="dil"><button data-l="tr" class="on">TR</button><button data-l="en">EN</button><button data-l="de">DE</button></div>
-    <a class="cta" id="navcta" href="#iletisim">WhatsApp</a>
+    <a class="cta" id="navcta" href="#iletisim" data-t="cta1">Ücretsiz demo</a>
   </div>
 </nav>
 
 <header class="kap">
-  <p class="mono" data-t="etiket">// bağımsız web stüdyosu — istanbul</p>
-  <h1 data-t="h1">Şablon değil. <em>Sizin</em> işiniz için tasarlanmış site.</h1>
+  <p class="olcu" data-t="etiket">İş emri · 15 canlı · İstanbul</p>
+  <h1 data-t="h1">Şablon değil. <span>Sizin</span> işiniz için kesilmiş site.</h1>
   <p class="girisalt" data-t="alt">Instagram'dan gelen kişiyi arayan, yol tarifi alan, randevu isteyen müşteriye çeviren siteler. Önce ücretsiz demo hazırlarız — beğenirseniz yayına alırız.</p>
   <div class="dus">
-    <a class="cta" id="cta1" href="#iletisim" data-t="cta1">Ücretsiz demo iste</a>
+    <a class="cta" id="cta1" href="#iletisim" data-t="cta1">Ücretsiz demo</a>
     <a class="cta hayalet" href="#isler" data-t="cta2">İşleri gör</a>
   </div>
   <div class="serit">
     <div><b>15</b><span data-t="k1">canlı iş</span></div>
     <div><b>9</b><span data-t="k2">sektör</span></div>
-    <div><b>48<small style="font-size:.5em"> </small>s</b><span data-t="k3">ilk demo</span></div>
-    <div><b>1</b><span data-t="k4">tek dokunuş cta</span></div>
+    <div><b>48 SA</b><span data-t="k3">ilk demo</span></div>
+    <div><b>0 ₺</b><span data-t="k4">demo bedeli</span></div>
   </div>
 </header>
 
 <section class="kap" id="isler">
   <div class="baslik">
-    <div><p class="mono">// 01 — işler</p><h2 data-t="h2a">Hepsi canlı. Hepsi gerçek bir işletme için.</h2></div>
-    <p class="mono" data-t="ipucu">satıra dokun → sağda açılır</p>
+    <div><p class="olcu" data-t="bol1">İşler</p><h2 data-t="h2a">Hepsi canlı. Hepsi gerçek bir işletme için.</h2></div>
+    <p class="olcu" data-t="ipucu">Satıra dokun · sağda açılır</p>
   </div>
   <div class="isler">
     <div class="index" id="index"></div>
     <div>
-      <div class="cerceve"><div class="ekran" id="ekran"></div></div>
-      <div class="ekranalt">
-        <div><div class="ad" id="aktifAd"></div><div class="mono" id="aktifSek"></div></div>
-        <a class="acbtn" id="acLink" target="_blank" rel="noopener" data-t="canliac">canlı siteyi aç ↗</a>
+      <div class="cerceve">
+        <div class="ekran" id="ekran"></div>
+        <div class="ekranalt">
+          <div><div class="ad" id="aktifAd"></div><div class="olcu" id="aktifSek"></div></div>
+          <a class="acbtn" id="acLink" target="_blank" rel="noopener" data-t="canliac">Canlı siteyi aç ↗</a>
+        </div>
       </div>
     </div>
     <div class="mobilkart" id="mobil"></div>
@@ -162,46 +187,56 @@ footer{border-top:1px solid var(--cizgi);padding:26px 0 34px;display:flex;justif
 </section>
 
 <section class="kap">
-  <div class="baslik"><div><p class="mono">// 02 — nasıl</p><h2 data-t="h2b">Üç adım. Riski biz alıyoruz.</h2></div></div>
+  <div class="baslik"><div><p class="olcu" data-t="bol2">Süreç</p><h2 data-t="h2b">Üç adım. Riski biz alıyoruz.</h2></div></div>
   <div class="adimlar">
-    <div class="adim"><p class="mono">01</p><h3 data-t="a1b">Bakarız</h3><p data-t="a1p">Instagram'ınıza, mekânınıza, müşterinizin ne aradığına bakarız. 10 dakikalık bir konuşma yeter.</p></div>
-    <div class="adim"><p class="mono">02</p><h3 data-t="a2b">48 saatte demo</h3><p data-t="a2p">Kendi fotoğraflarınızla, kendi renginizle gerçek bir site kurarız. Ücretsiz. Beğenmezseniz yükümlülük yok.</p></div>
-    <div class="adim"><p class="mono">03</p><h3 data-t="a3b">Yayına alırız</h3><p data-t="a3p">Alan adı sizin, site sizin. Kurulumu biz yaparız; Google'da ve Instagram bio'nuzda ertesi gün canlıdır.</p></div>
+    <div class="adim"><p class="olcu">01</p><h3 data-t="a1b">Bakarız</h3><p data-t="a1p">Instagram'ınıza, mekânınıza, müşterinizin ne aradığına bakarız. 10 dakikalık bir konuşma yeter.</p></div>
+    <div class="adim"><p class="olcu">02</p><h3 data-t="a2b">48 saatte demo</h3><p data-t="a2p">Kendi fotoğraflarınızla, kendi renginizle gerçek bir site kurarız. Ücretsiz. Beğenmezseniz yükümlülük yok.</p></div>
+    <div class="adim"><p class="olcu">03</p><h3 data-t="a3b">Yayına alırız</h3><p data-t="a3p">Alan adı sizin, site sizin. Kurulumu biz yaparız; Google'da ve Instagram bio'nuzda ertesi gün canlıdır.</p></div>
   </div>
 </section>
 
 <section class="kap">
-  <div class="baslik"><div><p class="mono">// 03 — fiyat</p><h2 data-t="h2c">Fiyat sayfada yazar.</h2></div><p class="mono" data-t="fnot">tek seferlik · kdv hariç</p></div>
+  <div class="baslik"><div><p class="olcu" data-t="bol3">Fiyat</p><h2 data-t="h2c">Fiyat sayfada yazar.</h2></div><p class="olcu" data-t="fnot">Tek seferlik · KDV hariç</p></div>
   <div class="fiyatlar">
-    <div class="fiyat"><p class="mono" data-t="p1e">vitrin</p><div class="tut">₺14.000</div><ul>
+    <div class="fiyat"><p class="olcu" data-t="p1e">Vitrin</p><div class="tut">₺14.000</div><ul>
       <li data-t="p1a">Tek sayfa, tam animasyonlu</li><li data-t="p1b">Menü / hizmet + galeri</li><li data-t="p1c">WhatsApp + yol tarifi butonu</li><li data-t="p1d">Mobil öncelikli, 1 sn açılır</li></ul></div>
-    <div class="fiyat one"><p class="mono" data-t="p2e">tam ★</p><div class="tut">₺26.000</div><ul>
+    <div class="fiyat one"><p class="olcu" data-t="p2e">Tam</p><div class="tut">₺26.000</div><ul>
       <li data-t="p2a">Çok bölümlü site + hikâye akışı</li><li data-t="p2b">Rezervasyon / randevu akışı</li><li data-t="p2c">Instagram akışı + Google yorumları</li><li data-t="p2d">Yerel SEO + Google Haritalar kurulumu</li></ul></div>
-    <div class="fiyat"><p class="mono" data-t="p3e">bakım</p><div class="tut">₺2.500<small style="font-size:.38em;letter-spacing:0"> /ay</small></div><ul>
+    <div class="fiyat"><p class="olcu" data-t="p3e">Bakım</p><div class="tut">₺2.500<span style="font-size:.42em;letter-spacing:.05em"> /AY</span></div><ul>
       <li data-t="p3a">İçerik ve fiyat güncellemeleri</li><li data-t="p3b">Yeni fotoğraf / kampanya bölümü</li><li data-t="p3c">Aylık ziyaretçi raporu</li><li data-t="p3d">Teknik bakım, yedek, güvenlik</li></ul></div>
   </div>
 </section>
 
 <section class="son kap" id="iletisim">
-  <p class="mono">// 04</p>
   <h2 data-t="h2d">Sitenizi görmeden karar vermeyin.</h2>
-  <p class="girisalt" style="margin:0 auto 30px" data-t="sonalt">İşletmenizin adını yazın, 48 saat içinde kendi fotoğraflarınızla hazırlanmış demoyu gönderelim. Ücretsiz.</p>
-  <a class="cta" id="cta2" href="#" data-t="cta1">Ücretsiz demo iste</a>
+  <p class="girisalt" data-t="sonalt">İşletmenizin adını yazın, 48 saat içinde kendi fotoğraflarınızla hazırlanmış demoyu gönderelim. Ücretsiz.</p>
+  <a class="cta" id="cta2" href="#" data-t="cta1">Ücretsiz demo</a>
 </section>
 
 <footer class="kap">
-  <span class="mono">© 2026 Clearform</span>
-  <span class="mono" id="footIletisim">whatsapp · e-posta</span>
+  <span class="olcu">© 2026 Clearform</span>
+  <span class="olcu" id="footIletisim"></span>
 </footer>
-<a class="cta stick" id="stickcta" href="#iletisim" data-t="cta1">Ücretsiz demo iste</a>
+<a class="cta stick" id="stickcta" href="#" data-t="cta1">Ücretsiz demo</a>
 
 <script>
-/* ---- İLETİŞİM (TEK KAYNAK — numarayı buraya yaz) ---- */
-const WA='4915756262699';         // Arda · WhatsApp (+49 157 5626 2699)
-const MAIL='';                    // outreach maili gelince doldur (boşken footer'da gösterilmez)
+const WA='4915756262699';
+const WA_GOSTER='+49 157 5626 2699';
+const MAIL='';
 const WA_METIN={tr:'Merhaba, işletmem için ücretsiz demo istiyorum.',en:'Hi, I would like a free demo for my business.',de:'Guten Tag, ich hätte gerne einen kostenlosen Entwurf für meinen Betrieb.'};
-function waLink(){return `https://wa.me/${WA}?text=`+encodeURIComponent(WA_METIN[dil]||WA_METIN.tr)}
-/* ---- İŞLER ---- */
+
+/* müşteri renkleri — her demonun KENDİ marka token'ından çıkarıldı, kontrast kelepçesinden geçti
+   [arayüz işareti >=3:1, metin >=4.5:1] · zemin #DEE1DA */
+const VINIL={
+  'rafine-moda':['#974E26','#974E26'], 'bonita-nail':['#5E32E6','#5E32E6'],
+  'cadde-kuafor':['#C0653A','#964F2D'], 'frunch':['#C24A23','#A8401E'],
+  'ipek-estetik':['#9C7A2F','#765D23'], 'kadikoy-estetik-dis':['#2E8C90','#246C6F'],
+  'moda-meyhanesi':['#AC6E22','#89581B'], 'mola-brunch':['#C2622E','#9A4E25'],
+  'moonlight-pilates':['#A07531','#7F5D27'], 'pechko':['#9B7836','#775C29'],
+  'rawsters-coffee':['#AB742F','#855A25'], 'yumma-moda':['#C76333','#9B4D28'],
+  'ze-butik':['#9C7A2F','#765D23'], 'carbo-smash':['#D4540C','#A5420A'],
+  'koz-smashhouse':['#D05700','#A54500']
+};
 const ISLER=[
  {s:'rafine-moda',ad:'Rafine Moda',sek:{tr:'Kuaför · Moda, İstanbul',en:'Hair salon · Istanbul',de:'Friseur · Istanbul'}},
  {s:'moonlight-pilates',ad:'Moonlight Pilates',sek:{tr:'Pilates stüdyosu · Kadıköy',en:'Pilates studio · Istanbul',de:'Pilates-Studio · Istanbul'}},
@@ -220,87 +255,91 @@ const ISLER=[
  {s:'ze-butik',ad:'Z&E Butik',sek:{tr:'Abiye butik',en:'Evening wear boutique',de:'Abendmode-Boutique'}},
 ];
 const CANLI={};
-fetch('canli.json').then(r=>r.json()).then(j=>Object.assign(CANLI,j)).catch(()=>{});
-const URLS=s=>`https://${s}-demo.netlify.app`;
+fetch('canli.json').then(r=>r.json()).then(j=>{Object.assign(CANLI,j);ciz();sec(aktif,true);}).catch(()=>{});
 
-/* ---- DİL ---- */
-const D={
- tr:{},
- en:{etiket:'// independent web studio — istanbul',h1:'Not a template. A site built for <em>your</em> business.',
+const D={ tr:{},
+ en:{etiket:'Work order · 15 live · Istanbul',h1:'Not a template. A site cut for <span>your</span> business.',
   alt:'Sites that turn an Instagram visitor into someone who calls, gets directions and books. We build a free demo first — you only pay if you love it.',
-  cta1:'Get a free demo',cta2:'See the work',k1:'live sites',k2:'industries',k3:'first draft',k4:'single tap cta',
-  h2a:'All live. All built for a real business.',ipucu:'tap a row → opens on the right',canliac:'open live site ↗',
-  h2b:'Three steps. We carry the risk.',a1b:'We look',a1p:'At your Instagram, your space, what your customer is actually searching for. A ten-minute call is enough.',
-  a2b:'Draft in 48h',a2p:'A real site with your own photos and colours. Free. No obligation if it is not for you.',
+  cta1:'Free demo',cta2:'See the work',k1:'live sites',k2:'industries',k3:'first draft',k4:'demo cost',
+  bol1:'Work',h2a:'All live. All built for a real business.',ipucu:'Tap a row · opens on the right',canliac:'Open live site ↗',
+  bol2:'Process',h2b:'Three steps. We carry the risk.',a1b:'We look',a1p:'At your Instagram, your space, what your customer is actually searching for. A ten-minute call is enough.',
+  a2b:'Draft in 48h',a2p:'A real site with your own photos and your own colour. Free. No obligation if it is not for you.',
   a3b:'We go live',a3p:'The domain is yours, the site is yours. We handle setup — live on Google and in your bio the next day.',
-  h2c:'The price is on the page.',fnot:'one-off · excl. tax',
-  p1e:'showcase',p1a:'One page, fully animated',p1b:'Menu / services + gallery',p1c:'WhatsApp + directions button',p1d:'Mobile first, loads in 1s',
-  p2e:'full ★',p2a:'Multi-section site with a story flow',p2b:'Booking / appointment flow',p2c:'Instagram feed + Google reviews',p2d:'Local SEO + Google Maps setup',
-  p3e:'care',p3a:'Content and price updates',p3b:'New photos / campaign sections',p3c:'Monthly visitor report',p3d:'Maintenance, backups, security',
+  bol3:'Price',h2c:'The price is on the page.',fnot:'One-off · excl. tax',
+  p1e:'Showcase',p1a:'One page, fully animated',p1b:'Menu / services + gallery',p1c:'WhatsApp + directions button',p1d:'Mobile first, loads in 1s',
+  p2e:'Full',p2a:'Multi-section site with a story flow',p2b:'Booking / appointment flow',p2c:'Instagram feed + Google reviews',p2d:'Local SEO + Google Maps setup',
+  p3e:'Care',p3a:'Content and price updates',p3b:'New photos / campaign sections',p3c:'Monthly visitor report',p3d:'Maintenance, backups, security',
   h2d:'Do not decide before you see your own site.',sonalt:'Send your business name and we will send back a demo built with your own photos within 48 hours. Free.'},
- de:{etiket:'// unabhängiges webstudio — istanbul',h1:'Keine Vorlage. Eine Seite für <em>Ihren</em> Betrieb.',
+ de:{etiket:'Auftrag · 15 live · Istanbul',h1:'Keine Vorlage. Eine Seite, für <span>Ihren</span> Betrieb geschnitten.',
   alt:'Seiten, die aus einem Instagram-Besucher einen Anruf, eine Wegbeschreibung und einen Termin machen. Wir bauen zuerst einen kostenlosen Entwurf — Sie zahlen nur, wenn er gefällt.',
-  cta1:'Kostenlosen Entwurf anfragen',cta2:'Arbeiten ansehen',k1:'live-seiten',k2:'branchen',k3:'erster entwurf',k4:'ein-klick-cta',
-  h2a:'Alle live. Alle für einen echten Betrieb gebaut.',ipucu:'zeile antippen → öffnet rechts',canliac:'live-seite öffnen ↗',
-  h2b:'Drei Schritte. Das Risiko tragen wir.',a1b:'Wir schauen',a1p:'Auf Ihr Instagram, Ihren Betrieb, danach was Ihre Kundschaft wirklich sucht. Zehn Minuten genügen.',
-  a2b:'Entwurf in 48 Std.',a2p:'Eine echte Seite mit Ihren eigenen Fotos und Farben. Kostenlos und unverbindlich.',
+  cta1:'Kostenloser Entwurf',cta2:'Arbeiten ansehen',k1:'Live-Seiten',k2:'Branchen',k3:'erster Entwurf',k4:'Entwurfskosten',
+  bol1:'Arbeiten',h2a:'Alle live. Alle für einen echten Betrieb gebaut.',ipucu:'Zeile antippen · öffnet rechts',canliac:'Live-Seite öffnen ↗',
+  bol2:'Ablauf',h2b:'Drei Schritte. Das Risiko tragen wir.',a1b:'Wir schauen',a1p:'Auf Ihr Instagram, Ihren Betrieb, danach was Ihre Kundschaft wirklich sucht. Zehn Minuten genügen.',
+  a2b:'Entwurf in 48 Std.',a2p:'Eine echte Seite mit Ihren eigenen Fotos und Ihrer eigenen Farbe. Kostenlos und unverbindlich.',
   a3b:'Wir gehen live',a3p:'Domain und Seite gehören Ihnen. Die Einrichtung übernehmen wir — am nächsten Tag online.',
-  h2c:'Der Preis steht auf der Seite.',fnot:'einmalig · zzgl. MwSt.',
-  p1e:'schaufenster',p1a:'Eine Seite, voll animiert',p1b:'Speisekarte / Leistungen + Galerie',p1c:'WhatsApp- und Routen-Button',p1d:'Mobile first, lädt in 1 Sek.',
-  p2e:'komplett ★',p2a:'Mehrseitig mit Erzählfluss',p2b:'Buchungs- / Terminstrecke',p2c:'Instagram-Feed + Google-Bewertungen',p2d:'Lokales SEO + Google-Maps-Einrichtung',
-  p3e:'pflege',p3a:'Inhalts- und Preisaktualisierungen',p3b:'Neue Fotos / Kampagnenbereiche',p3c:'Monatlicher Besucherbericht',p3d:'Wartung, Backups, Sicherheit',
+  bol3:'Preis',h2c:'Der Preis steht auf der Seite.',fnot:'Einmalig · zzgl. MwSt.',
+  p1e:'Schaufenster',p1a:'Eine Seite, voll animiert',p1b:'Speisekarte / Leistungen + Galerie',p1c:'WhatsApp- und Routen-Button',p1d:'Mobile first, lädt in 1 Sek.',
+  p2e:'Komplett',p2a:'Mehrseitig mit Erzählfluss',p2b:'Buchungs- / Terminstrecke',p2c:'Instagram-Feed + Google-Bewertungen',p2d:'Lokales SEO + Google-Maps-Einrichtung',
+  p3e:'Pflege',p3a:'Inhalts- und Preisaktualisierungen',p3b:'Neue Fotos / Kampagnenbereiche',p3c:'Monatlicher Besucherbericht',p3d:'Wartung, Backups, Sicherheit',
   h2d:'Entscheiden Sie erst, wenn Sie Ihre eigene Seite gesehen haben.',sonalt:'Schicken Sie uns Ihren Betriebsnamen — innerhalb von 48 Stunden erhalten Sie einen Entwurf mit Ihren eigenen Fotos. Kostenlos.'}
 };
-/* TR = HTML'de yazılı olan; ilk yüklemede yakala */
 document.querySelectorAll('[data-t]').forEach(el=>{D.tr[el.dataset.t]=el.innerHTML});
-
 let dil='tr';
 function dilAyarla(l){
-  dil=l; document.documentElement.lang=l;
+  dil=l;document.documentElement.lang=l;
   document.querySelectorAll('[data-t]').forEach(el=>{const v=(D[l]||{})[el.dataset.t];if(v!==undefined)el.innerHTML=v});
   document.querySelectorAll('#dil button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
-  ciz(); sec(aktif,true); if(window.iletisimBagla)iletisimBagla();
+  ciz();sec(aktif,true);iletisimBagla();
   try{localStorage.setItem('cf_dil',l)}catch(e){}
 }
 document.querySelectorAll('#dil button').forEach(b=>b.onclick=()=>dilAyarla(b.dataset.l));
 
-/* ---- İMZA AN: seçilen iş DÖNEREK gelir ---- */
 const ekran=document.getElementById('ekran');
-let aktif=0, kilit=false, otomatik;
-ISLER.forEach(i=>{const im=new Image();im.src='assets/shots/'+i.s+'.jpg';im.alt=i.ad;im.loading='lazy';im.dataset.s=i.s;ekran.appendChild(im)});
+let aktif=0,kilit=false;
+ISLER.forEach(i=>{const im=new Image();im.src='assets/shots/'+i.s+'.jpg';im.alt=i.ad;im.loading='lazy';im.decoding='async';im.dataset.s=i.s;ekran.appendChild(im)});
+const azHareket=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function boya(slug){
+  const c=VINIL[slug]||['#1B1E19','#1B1E19'];
+  document.documentElement.style.setProperty('--vinil',c[0]);
+  document.documentElement.style.setProperty('--vinil-yazi',c[1]);
+}
+function harflendir(ad){
+  return [...ad].map((h,n)=>h===' '?' ':`<i style="transition-delay:${(n*22)}ms">${h.replace('&','&amp;').replace('<','&lt;')}</i>`).join('');
+}
 function sec(n,sessiz){
-  aktif=n; const i=ISLER[n];
+  aktif=n;const i=ISLER[n];
   document.querySelectorAll('#index .sat').forEach((s,x)=>s.classList.toggle('on',x===n));
   document.getElementById('aktifAd').textContent=i.ad;
   document.getElementById('aktifSek').textContent=i.sek[dil]||i.sek.tr;
-  document.getElementById('acLink').href=CANLI[i.s]||URLS(i.s);
-  if(sessiz){goster(i.s);return}
-  if(kilit)return; kilit=true;
-  ekran.classList.add('donuyor');
-  setTimeout(()=>{goster(i.s);ekran.classList.remove('donuyor');setTimeout(()=>kilit=false,450)},260);
+  document.getElementById('acLink').href=CANLI[i.s]||('https://'+i.s+'.vercel.app');
+  ekran.querySelectorAll('img').forEach(im=>im.classList.toggle('gor',im.dataset.s===i.s));
+  boya(i.s);
+  if(sessiz||azHareket){ekran.classList.add('yanik');return}
+  const sat=document.querySelectorAll('#index .sat')[n];
+  if(sat){sat.classList.remove('kesiyor');void sat.offsetWidth;sat.classList.add('kesiyor');}
+  ekran.classList.remove('yanik');requestAnimationFrame(()=>ekran.classList.add('yanik'));
 }
-function goster(s){ekran.querySelectorAll('img').forEach(im=>im.classList.toggle('gor',im.dataset.s===s))}
 function ciz(){
-  const ix=document.getElementById('index'), mb=document.getElementById('mobil');
-  ix.innerHTML=ISLER.map((i,n)=>`<button class="sat${n===aktif?' on':''}"><span class="no">${String(n+1).padStart(2,'0')}</span><span class="ad">${i.ad}</span><span class="sek">${i.sek[dil]||i.sek.tr}</span></button>`).join('');
-  ix.querySelectorAll('.sat').forEach((b,n)=>{b.onclick=()=>{sec(n);dur()};b.onmouseenter=()=>{if(window.innerWidth>900){sec(n);dur()}}});
-  mb.innerHTML=ISLER.map(i=>`<a class="mk" href="${CANLI[i.s]||URLS(i.s)}" target="_blank" rel="noopener"><img src="assets/shots/${i.s}.jpg" alt="${i.ad}" loading="lazy"><div class="mkalt"><div><div class="ad" style="font-family:Syne;font-weight:600">${i.ad}</div><div class="mono">${i.sek[dil]||i.sek.tr}</div></div><span class="mono">aç ↗</span></div></a>`).join('');
+  const ix=document.getElementById('index'),mb=document.getElementById('mobil');
+  ix.innerHTML=ISLER.map((i,n)=>`<button class="sat${n===aktif?' on':''}" aria-label="${i.ad}"><span class="bicak"></span><span class="ad">${harflendir(i.ad)}</span><span class="sek">${i.sek[dil]||i.sek.tr}</span></button>`).join('');
+  ix.querySelectorAll('.sat').forEach((b,n)=>{
+    b.onclick=()=>sec(n);
+    b.onmouseenter=()=>{if(innerWidth>900&&!kilit){kilit=true;sec(n);setTimeout(()=>kilit=false,220)}};
+  });
+  mb.innerHTML=ISLER.map(i=>{const c=(VINIL[i.s]||['#1B1E19'])[0];
+    return `<a class="mk" href="${CANLI[i.s]||('https://'+i.s+'.vercel.app')}" target="_blank" rel="noopener" style="border-left:3px solid ${c}"><img src="assets/shots/${i.s}.jpg" alt="${i.ad} — canlı site" loading="lazy" decoding="async"><div class="mkalt"><div><div class="ad">${i.ad}</div><div class="olcu">${i.sek[dil]||i.sek.tr}</div></div><span class="olcu">Aç ↗</span></div></a>`}).join('');
 }
-function dur(){clearInterval(otomatik);otomatik=null}
-const azHareket=matchMedia('(prefers-reduced-motion: reduce)').matches;
-function basla(){if(azHareket||window.innerWidth<=900)return;otomatik=setInterval(()=>sec((aktif+1)%ISLER.length),4200)}
-ciz(); sec(0,true);
-/* iletişim bağla */
-window.iletisimBagla=function iletisimBagla(){
+function waLink(){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(WA_METIN[dil]||WA_METIN.tr)}
+function iletisimBagla(){
   const l=waLink();
   ['navcta','cta1','cta2','stickcta'].forEach(id=>{const e=document.getElementById(id);if(e){e.href=l;e.target='_blank';e.rel='noopener'}});
-  document.getElementById('footIletisim').innerHTML=`<a href="${l}" target="_blank" rel="noopener">whatsapp · +49 157 5626 2699</a>`+(MAIL?` · <a href="mailto:${MAIL}">${MAIL}</a>`:'');
+  document.getElementById('footIletisim').innerHTML=`<a href="${l}" target="_blank" rel="noopener">WhatsApp · ${WA_GOSTER}</a>`+(MAIL?` · <a href="mailto:${MAIL}">${MAIL}</a>`:'');
 }
-iletisimBagla();
-new IntersectionObserver(e=>{e[0].isIntersecting?(otomatik||basla()):dur()},{threshold:.35}).observe(document.getElementById('isler'));
+ciz();sec(0,true);iletisimBagla();
 addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('kayd',scrollY>20),{passive:true});
-try{const k=localStorage.getItem('cf_dil');if(k&&k!=='tr')dilAyarla(k);}catch(e){}
-/* tarayıcı diline göre ilk açılış */
-if(!localStorage.getItem('cf_dil')){const n=(navigator.language||'tr').slice(0,2);if(n==='de')dilAyarla('de');else if(n!=='tr')dilAyarla('en');}
+try{const k=localStorage.getItem('cf_dil');if(k&&k!=='tr')dilAyarla(k);
+  else if(!k){const n=(navigator.language||'tr').slice(0,2);if(n==='de')dilAyarla('de');else if(n!=='tr')dilAyarla('en');}
+}catch(e){}
 </script>
 </body></html>
